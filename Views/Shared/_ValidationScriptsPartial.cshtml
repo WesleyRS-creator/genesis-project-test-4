@@ -1,0 +1,22 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const jsonTextarea = document.querySelector('.json-textarea');
+            if (jsonTextarea) {
+            jsonTextarea.addEventListener('blur', function() {
+                try {
+                    if (this.value.trim() !== '') {
+                        JSON.parse(this.value);
+                        this.style.borderColor = '#28a745';
+                    }
+                } catch (e) {
+                    this.style.borderColor = '#dc3545';
+                }
+            });
+        }
+    });
+</script>
+
+<!-- Include client-side validation scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>

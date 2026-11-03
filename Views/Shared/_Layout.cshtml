@@ -1,0 +1,134 @@
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testMVCSharpC | @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+
+<body>
+    <!-- Menu burger pour mobile -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        
+        <!-- Bouton toggle sidebar -->
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle sidebar">
+            <svg class="sidebar-toggle-btn-icon" width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+        </button>
+        
+        <div class="project-info">
+            
+            <div class="project-name">testMVCSharpC</div>
+            
+        </div>
+
+        <div class="navigation">
+            
+            <button class="scroll-btn top hidden" id="scrollUp">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 4L4 8l1.5 1.5L8 7l2.5 2.5L12 8 8 4z" />
+                </svg>
+            </button>
+            
+
+            <div class="nav-content" id="navContent">
+                <div class="project-description"><span data-i18n="entities"></span></div>
+                <a class="nav-item @(currentController == "Adresse" ? "active" : "")" asp-area="" asp-controller="Adresse" asp-action="Index">
+                    Adresse
+                </a>
+                <a class="nav-item @(currentController == "Participer" ? "active" : "")" asp-area="" asp-controller="Participer" asp-action="Index">
+                    Participer
+                </a>
+                <a class="nav-item @(currentController == "Passeport" ? "active" : "")" asp-area="" asp-controller="Passeport" asp-action="Index">
+                    Passeport
+                </a>
+                <a class="nav-item @(currentController == "Personne" ? "active" : "")" asp-area="" asp-controller="Personne" asp-action="Index">
+                    Personne
+                </a>
+                <a class="nav-item @(currentController == "Projet" ? "active" : "")" asp-area="" asp-controller="Projet" asp-action="Index">
+                    Projet
+                </a>
+                <div class="project-description"><span data-i18n="views"></span></div>
+                <a class="nav-item @(currentController == "VFicheCompletePersonne" ? "active" : "")" asp-area="" asp-controller="VFicheCompletePersonne" asp-action="Index">
+                    VFicheCompletePersonne
+                </a>
+                <a class="nav-item @(currentController == "VProjetsEtEquipe" ? "active" : "")" asp-area="" asp-controller="VProjetsEtEquipe" asp-action="Index">
+                    VProjetsEtEquipe
+                </a>
+                <a class="nav-item @(currentController == "VSynthetiseGlobal" ? "active" : "")" asp-area="" asp-controller="VSynthetiseGlobal" asp-action="Index">
+                    VSynthetiseGlobal
+                </a>
+            </div>
+
+            
+            <button class="scroll-btn bottom" id="scrollDown">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 12l4-4-1.5-1.5L8 9 5.5 6.5 4 8l4 4z" />
+                </svg>
+            </button>
+            
+        </div>
+
+        <div class="settings">
+            <div class="settings-btn" id="settingsBtn">
+                <span class="nav-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.75l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.75v.51a2 2 0 01-1 1.75l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.75V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.75l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.75v-.5a2 2 0 011-1.75l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.75V4a2 2 0 00-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </span>
+                <span data-i18n="settings"></span>
+            </div>
+
+            <!-- Box flottante des paramètres -->
+            <div class="settings-floating" id="settingsFloating">
+                <div class="setting-group">
+                    <label for="langSelect" data-i18n="language"></label>
+                    <select id="langSelect" name="langSelect" class="setting-select">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="themeSelect" data-i18n="theme"></label>
+                    <select id="theme" name="theme" class="setting-select">
+                        <option value="light" data-i18n="light"></option>
+                        <option value="dark" data-i18n="dark"></option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        @RenderBody()
+@RenderSection("Scripts", required: false)
+@await Html.PartialAsync("_PopupError")
+
+    </div>
+
+    <!-- Include Select2 utils scripts -->
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="~/css/select2.min.css">
+    <script src="~/js/select2.min.js"></script>
+
+    <script src="~/js/index.js"></script>
+    <script src="~/js/lang.js"></script>
+</body>
+
+</html>

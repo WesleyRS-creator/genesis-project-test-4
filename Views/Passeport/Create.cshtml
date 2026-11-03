@@ -1,0 +1,93 @@
+@model PasseportViewModel      
+@{
+    ViewData["Title"] = "Create Passeport";
+    var previousUrl = Context.Request.Headers["Referer"].ToString();
+    if (string.IsNullOrEmpty(previousUrl))
+    {
+        previousUrl = "/";
+    }
+}
+
+<div class="header">
+    <h1 class="page-title">Passeport / <span class="page-type"><span class="page-action"
+                data-i18n="create"></span></span></h1>
+    <a href="@Url.Action("Index")" class="btn btn-primary btn-md">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <p data-i18n="back_list"></p>
+    </a>
+</div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+	<div asp-validation-summary="All" class="error-message"></div>
+}
+
+
+<!-- Include Select2 utils scripts -->
+<script src="~/js/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="~/css/select2.min.css">
+<script src="~/js/select2.min.js"></script>
+
+<form class="form" method="post" enctype="multipart/form-data" asp-action="Create" asp-controller="Passeport">
+    <div class="form-group">
+        <label for="dateExpiration">dateExpiration
+        </label>
+        <input type="date" asp-for="Passeport.DateExpiration" placeholder="dateExpiration" >
+        <span asp-validation-for="Passeport.DateExpiration" class="field-validation-error"></span>
+    </div>
+    <div class="form-group">
+        <label for="numero">numero
+        </label>
+        <input type="text" asp-for="Passeport.Numero" placeholder="numero" >
+        <span asp-validation-for="Passeport.Numero" class="field-validation-error"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="idPersonne">idPersonne
+        </label>
+        <select id="idPersonne" asp-for="Passeport.IdPersonne" asp-items="@(Model?.PersonnesSelectList)">
+            <option></option>
+        </select>
+        <span asp-validation-for="Passeport.IdPersonne" class="field-validation-error"></span>
+
+        <script>
+            $('#idPersonne').select2({
+                placeholder: "idPersonne",
+                allowClear: true,
+                width: '100%'
+            });
+        </script>
+    </div>
+
+
+    <div class="form-actions">
+        <div class="form-actions-left">
+            <button type="reset" class="btn btn-tertiary btn-md">
+                <span data-i18n="reset"></span>
+            </button>
+        </div>
+
+        <div class="form-actions-right">
+            <a href="@previousUrl" type="button" class="btn btn-secondary btn-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+                <span data-i18n="cancel"></span>
+            </a>
+
+            <button type="submit" class="btn btn-secondary btn-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
+                    <path d="M17 21v-8H7v8M7 3v5h8" />
+                </svg>
+                <span data-i18n="save"></span>
+            </button>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+

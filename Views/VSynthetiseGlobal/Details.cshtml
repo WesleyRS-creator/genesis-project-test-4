@@ -1,0 +1,127 @@
+@model VSynthetiseGlobalViewModel
+@{
+    ViewData["Title"] = "VSynthetiseGlobal Details";
+    var previousUrl = Context.Request.Headers["Referer"].ToString();
+    if (string.IsNullOrEmpty(previousUrl))
+    {
+        previousUrl = "/";
+    }
+}
+
+@using testMVCSharpC.Utils
+<div class="header">
+    <h1 class="page-title">VSynthetiseGlobal / <span class="page-type"><span class="page-action"
+                data-i18n="details"></span></span></h1>
+    <a href="@previousUrl" class="btn btn-primary btn-md">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        <p data-i18n="back_list"></p>
+    </a>
+</div>
+
+<form class="form">
+    <div class="form-group">
+        <label for="idPersonne">idPersonne</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.IdPersonne</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nomComplet">nomComplet</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.NomComplet</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="trancheAge">trancheAge</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.TrancheAge</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="totalParticipations">totalParticipations</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.TotalParticipations</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="rolePrincipal">rolePrincipal</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.RolePrincipal</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="budgetMoyenProjets">budgetMoyenProjets</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.BudgetMoyenProjets</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="budgetGlobalMoyen">budgetGlobalMoyen</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.BudgetGlobalMoyen</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="positionBudget">positionBudget</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.PositionBudget</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nombreVilles">nombreVilles</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.NombreVilles</p>
+            
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="latitudeMoyenne">latitudeMoyenne</label>
+        <div class="info">
+
+            
+            <p>@Model.VSynthetiseGlobal.LatitudeMoyenne</p>
+            
+
+        </div>
+    </div>
+
+    
+</form>
+

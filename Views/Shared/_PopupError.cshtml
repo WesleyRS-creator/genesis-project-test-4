@@ -1,0 +1,8 @@
+@if (TempData["PopupError"] != null)
+{
+    <script>
+        window.onload = function () {
+            alert("@TempData["PopupError"]");
+        };  
+    </script>
+}
